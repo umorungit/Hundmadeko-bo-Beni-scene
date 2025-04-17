@@ -14,31 +14,72 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<script>
+
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('.nav');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('active');
+
+    // アクセシビリティ対応
+    const isOpen = hamburger.classList.contains('active');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    nav.setAttribute('aria-hidden', !isOpen);
+  });
+
+  // メニューの外側をクリックした時の処理
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav') && !e.target.closest('.hamburger') && nav.classList.contains('active')) {
+      hamburger.classList.remove('active');
+      nav.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', false);
+      nav.setAttribute('aria-hidden', true);
+    }
+  });
+});
+</script>
+
+
 </head>
+
 
 
 <body>
 
-
 <p class="beni">
- <a href="https://umorungit.github.io/Hundmadeko-bo-Beni/"><img alt="ロゴの画像" src="https://github.com/umorungit/Hundmadeko-bo-Beni-scene/blob/main/logo7.png?raw=true"></a>
+ <a href="https://umorungit.github.io/Hundmadeko-bo-Beni/"><img alt="ロゴの画像" src="https://github.com/umorungit/Hundmadeko-bo-Beni/blob/main/logo7.png?raw=true"></a>
 </p>
 
 
-<input type="checkbox" id="overlay-input" />
-<label for="overlay-input" id="overlay-button"><span></span></label>
-  <div id="overlay">
-    <ul>
-      <li><a href="https://umorungit.github.io/Hundmadeko-bo-Beni/">Top<br><spn class="baner">～トップ～</spn></a></li>
-      <li><a href="https://umorungit.github.io/Hundmadeko-bo-Beni-omoi/">Thought<br><spn class="baner">～工房Beniの想い～</spn></a></li>
-      <li><a href="https://umorungit.github.io/Hundmadeko-bo-Beni-scene/">Scene<br><spn class="baner">～こんなシーンに～</spn></a></li>
-      <li><a href="オリジナル髪飾りを作る1.html">Made<br><spn class="baner">～オリジナル髪飾りを作る～</spn></a></li>
-      <li><a href="髪飾り一覧2.html">Items<br><spn class="baner">～髪飾り一覧～</spn></a></li>
-      <li><a href="商品購入1.html">Buy<br><spn class="baner">～商品ご購入～</spn></a></li>
-      <li><a href="工房情報1.html">Information<br><spn class="baner">～工房情報～</spn></a></li>
-      <li><a href="工房情報1.html">Question<br><spn class="baner">～よくある質問～</spn></a></li>
+<div class="header">
+  <button class="hamburger" aria-label="メニュー" aria-controls="nav-menu" aria-expanded="false">
+    <span class="hamburger__line"></span>
+    <span class="hamburger__line"></span>
+    <span class="hamburger__line"></span>
+  </button>
+
+  <nav id="nav-menu" class="nav" aria-hidden="true">
+
+
+    <ul class="nav__list">
+      <li class="nav__item"><a href="https://umorungit.github.io/Hundmadeko-bo-Beni/" class="nav__link">TOP</a></li>
+      <li class="nav__item"><a href="https://umorungit.github.io/Hundmadeko-bo-Beni-omoi/" class="nav__link">工房Beniの想い</a></li>
+      <li class="nav__item"><a href="https://umorungit.github.io/Hundmadeko-bo-Beni-scene/" class="nav__link">こんなシーンに</a></li>
+      <li class="nav__item"><a href="https://umorungit.github.io/Hundmadeko-bo-Beni-made/" class="nav__link">Myリボンを作る</a></li>
+      <li class="nav__item"><a href="https://umorungit.github.io/Hundmadeko-bo-Beni-items/" class="nav__link">髪飾り一覧</a></li>
+      <li class="nav__item"><a href="https://umorungit.github.io/Hundmadeko-bo-Beni-color/" class="nav__link">生地の色・模様一覧</a></li>
+      <li class="nav__item"><a href="https://umorungit.github.io/Hundmadeko-bo-Beni-buy/" class="nav__link">商品のご購入</a></li>
+      <li class="nav__item"><a href="https://umorungit.github.io/Hundmadeko-bo-Beni-information/" class="nav__link">工房情報</a></li>
+      <li class="nav__item"><a href="https://umorungit.github.io/Hundmadeko-bo-Beni-information/" class="nav__link">よくある質問</a></li>
     </ul>
-  </div>
+  </nav>
+</div><!--header-->
+
+
 
 
 
