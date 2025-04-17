@@ -20,7 +20,11 @@ body {
 .beni{
 	position:fixed;
 	top:2%;
-	left:2%;
+	left:3%;
+	z-index: 80;
+	opacity:0.9;
+	padding:10px;
+	border-radius:10px;
 }
 
 
@@ -28,123 +32,128 @@ body {
 
 
 
-@keyframes bugfix {
-  from {
-    padding: 0;
-  }
-  to {
-    padding: 0;
-  }
-}
-@-webkit-keyframes bugfix {
-  from {
-    padding: 0;
-  }
-  to {
-    padding: 0;
-  }
-}
-#overlay-button {
-  position: fixed;
-  right: 2em;
-  top: 3em;
-  padding: 26px 11px;
-  z-index: 5;
-  cursor: pointer;
-  user-select: none;
-}
 
-#overlay-button span {
-  height: 4px;
-  width: 35px;
-  border-radius: 2px;
-  				background-color:#d7003a;
+
+
+.header {
   position: relative;
-  display: block;
-  transition: all .2s ease-in-out;
 }
 
-#overlay-button span:before {
-  top: -10px;
-  visibility: visible;
-
-}
-
-#overlay-button span:after {
-  top: 10px;
-}
-
-#overlay-button span:before, #overlay-button span:after {
-  height: 4px;
-  width: 35px;
-  border-radius: 2px;
- 				 background:#d7003a;
-  position: absolute;
-  content: "";
-  transition: all .2s ease-in-out;
-}
-
-#overlay-button:hover span, #overlay-button:hover span:before, #overlay-button:hover span:after {
- 				 background-color:#d7003a;
-}
-
-input[type=checkbox] {
-  display: none; 
-  
-}
-
-input[type=checkbox]:checked ~ #overlay {
-  visibility: visible; 
-}
-
-input[type=checkbox]:checked ~ #overlay-button:hover span, input[type=checkbox]:checked ~ #overlay-button span {
-  background: transparent;
-  
-  
-}
-input[type=checkbox]:checked ~ #overlay-button span:before {
-  transform: rotate(45deg) translate(7px, 7px);
-
-}
-input[type=checkbox]:checked ~ #overlay-button span:after {
-  transform: rotate(-45deg) translate(7px, -7px);
-
-
-}
-
-#overlay {
-  height: 100vh;
-  width: 100vw;
-			background-color:#fcf1f0;
-
-  z-index: 2;
-  visibility: hidden;
+.hamburger {
   position: fixed;
+  top: 20px;
+  right: 20px;
+  padding:0 0 65px 59px;
+  z-index: 100;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+	background-color:#fcf1f0; /*ハンバーガーメニュー3本線の背景色*/
+	opacity:0.9;
+	border-radius:10px 10px;
 }
-#overlay.active {
+
+.hamburger__line {
+  position: absolute;
+  left: 11px;
+  width: 36px;
+  height: 4px;
+  background-color: #d7003a; /*ハンバーガーメニューの3本線の色*/
+  transition: all .4s;
+}
+
+.hamburger__line:nth-of-type(1) {
+  top: 24px;
+}
+.hamburger__line:nth-of-type(2) {
+  top: 33px;
+}
+.hamburger__line:nth-of-type(3) {
+  top: 42px;
+}
+
+/* メニューオープン時 */
+.hamburger.active .hamburger__line:nth-of-type(1) {
+  transform: translateY(9px) rotate(-45deg);
+}
+.hamburger.active .hamburger__line:nth-of-type(2) {
+  opacity: 0;
+}
+.hamburger.active .hamburger__line:nth-of-type(3) {
+  transform: translateY(-9px) rotate(45deg);
+}
+
+.nav {/*メニューオープン時の一番外側の背景色*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100vh;
+	background-color:#eebbcb;
+  box-shadow: 2px 0 4px rgba(0,0,0,.1);
+  transform: translateX(-100%);
+  transition: transform .4s;
+  z-index: 90;
+}
+
+.nav.active {
+  transform: translateX(0);
+}
+
+.nav__list {/*メニューオープン時の上の空白*/
+  padding: 20px 0 0;
+  list-style: none;
+}
+
+.nav__item {/*メニューオープン時のリストの背景色*/
+  padding: 0 20px;
+	background-color:#fff;
 
 }
-#overlay ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  height: 100vh;
-  padding-left: 0;
-  list-style-type: none;
+
+.nav__item a:hover{/*メニューオープン時のリストのホバー時の背景色*/
+	background-color:#d7003a;
+	color:#fff;
 }
-#overlay ul li {
-  padding: 0.8em;
-}
-#overlay ul li a {
-  				color:#d7003a;
+
+
+
+
+
+.nav__link {
+  display: block;
+  padding: 15px 0;
+  color: #333;
   text-decoration: none;
-  font-size: 1.5em;
+  border-bottom: 1px solid #ee827c;
 }
-#overlay ul li a:hover {
-  color: #000!important;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .baner{
 	font-size:14px;
@@ -271,6 +280,9 @@ footer{
 }
 
 
+.nav {
+  width: 70%;
+}
 
 
 
